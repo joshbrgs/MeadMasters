@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package reviews;
+option go_package = "protobuf/reviews";
+
+service ReviewService {
+  rpc GetReviewById (ReviewByIdRequest) returns (Review);
+  rpc CreateReview (CreateReviewRequest) returns (ReviewIdResponse);
+  rpc UpdateReview (UpdateReviewRequest) returns (ReviewResponse);
+  rpc DeleteReview (ReviewByIdRequest) returns (ReviewResponse);
+}
+
+message Review {
+  string id = 1;
+  string name = 2;
+  string location = 3;
+}
+
+message ReviewByIdRequest {
+  string id = 1;
+}
+
+message CreateReviewRequest {
+  string name = 1;
+  string location = 2;
+}
+
+message UpdateReviewRequest {
+  string id = 1;
+  string name = 2;
+  string location = 3;
+}
+
+message ReviewResponse {
+  string message = 1;
+}
+
+message ReviewIdResponse {
+  string id = 1;
+}
+
